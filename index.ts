@@ -6,6 +6,8 @@ import { buildSchema } from "type-graphql";
 import { RecipeResolver } from "./recipe-resolver";
 import { sampleRecipes } from "./sample-recipes";
 
+import "./test-resolver";
+
 // put sample recipes in container
 Container.set({ id: "SAMPLE_RECIPES", factory: () => sampleRecipes.slice() });
 
@@ -14,7 +16,7 @@ async function bootstrap() {
   const schema = await buildSchema({
     resolvers: [RecipeResolver],
     // register 3rd party IOC container
-    container: Container,
+    container: Container
   });
 
   // Create GraphQL server

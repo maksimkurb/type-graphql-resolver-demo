@@ -32,10 +32,4 @@ export class RecipeResolver {
   async addRecipe(@Arg("recipe") recipe: RecipeInput): Promise<Recipe> {
     return this.recipeService.add(recipe);
   }
-
-  @FieldResolver()
-  async numberInCollection(@Root() recipe: Recipe): Promise<number> {
-    const index = await this.recipeService.findIndex(recipe);
-    return index + 1;
-  }
 }
